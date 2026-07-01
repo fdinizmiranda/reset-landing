@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESET — Reiniciando sua visão para impactar uma geração</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --azul-marinho: #0B1D3A;
+            --azul-escuro: #102A4E;
+            --azul-medio: #1A3A6B;
+            --dourado: #C8963E;
+            --dourado-claro: #D4A853;
+            --dourado-suave: #E8CF8B;
+            --branco: #FFFFFF;
+            --cinza-claro: #F5F3EF;
+            --cinza-medio: #8B8B8B;
+            --cinza-escuro: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--branco);
+            color: var(--cinza-escuro);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 29, 58, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 14px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--dourado);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            background: var(--dourado);
+            color: var(--azul-marinho);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--dourado-claro);
+            transform: translateY(-1px);
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-marinho) 0%, var(--azul-escuro) 50%, var(--azul-medio) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(200, 150, 62, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(200, 150, 62, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(200, 150, 62, 0.15);
+            border: 1px solid rgba(200, 150, 62, 0.3);
+            color: var(--dourado-claro);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--branco);
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--dourado);
+        }
+
+        .hero .subtitle {
+            font-size: 1.35rem;
+            color: var(--dourado-suave);
+            font-weight: 300;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .hero .author {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 48px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--dourado);
+            color: var(--azul-marinho);
+        }
+
+        .btn-primary:hover {
+            background: var(--dourado-claro);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200, 150, 62, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--branco);
+            border: 2px solid var(--dourado);
+        }
+
+        .btn-outline:hover {
+            background: rgba(200, 150, 62, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* ─── SOBRE ─── */
+        .about {
+            background: var(--branco);
+            padding: 100px 24px;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--dourado);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--azul-marinho);
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
+            max-width: 700px;
+            margin: 0 auto 24px;
+            line-height: 1.9;
+        }
+
+        /* ─── PRINCÍPIOS ─── */
+        .principles {
+            background: var(--cinza-claro);
+            padding: 100px 24px;
+        }
+
+        .principles-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .principles-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .principles h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--azul-marinho);
+            margin-bottom: 12px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .principle-card {
+            background: var(--branco);
+            border-radius: 12px;
+            padding: 28px;
+            border-left: 4px solid var(--dourado);
+            transition: all 0.3s ease;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .principle-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--dourado);
+            margin-bottom: 4px;
+        }
+
+        .principle-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--azul-marinho);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .principle-card p {
+            font-size: 0.9rem;
+            color: var(--cinza-medio);
+            line-height: 1.6;
+        }
+
+        /* ─── AUTOR ─── */
+        .author-section {
+            background: var(--azul-marinho);
+            padding: 100px 24px;
+            color: var(--branco);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(200, 150, 62, 0.07) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .author-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .author-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--dourado);
+            margin: 0 auto 28px;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dourado);
+            margin-bottom: 8px;
+        }
+
+        .author-role {
+            font-size: 0.95rem;
+            color: var(--dourado-suave);
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .author-section p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            background: var(--branco);
+            padding: 100px 24px;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--azul-marinho);
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--cinza-escuro);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-amazon {
+            background: var(--azul-marinho);
+            color: var(--dourado);
+        }
+
+        .btn-amazon:hover {
+            background: var(--azul-escuro);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(11, 29, 58, 0.3);
+        }
+
+        .btn-chapter {
+            background: var(--dourado);
+            color: var(--azul-marinho);
+        }
+
+        .btn-chapter:hover {
+            background: var(--dourado-claro);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200, 150, 62, 0.3);
+        }
+
+        /* ─── FOOTER ─── */
+        .footer {
+            background: var(--azul-marinho);
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid rgba(200, 150, 62, 0.2);
+        }
+
+        .footer-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dourado);
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .footer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link.instagram {
+            background: var(--dourado);
+            color: var(--azul-marinho);
+        }
+
+        .footer-link.instagram:hover {
+            background: var(--dourado-claro);
+            transform: translateY(-2px);
+        }
+
+        .footer-link.whatsapp {
+            background: transparent;
+            color: var(--dourado);
+            border: 2px solid var(--dourado);
+        }
+
+        .footer-link.whatsapp:hover {
+            background: rgba(200, 150, 62, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        .icon {
+            width: 22px;
+            height: 22px;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        /* ─── RESPONSIVO ── */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+
+            .about h2,
+            .principles h2,
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-cta {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .author-photo {
+                width: 130px;
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── NAV ─── -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">RESET</a>
+            <a href="#baixar" class="nav-cta">📥 Capítulo 1 Grátis</a>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">📖 E-BOOK</div>
+            <h1><span>RESET</span></h1>
+            <p class="subtitle">Reiniciando sua visão para impactar uma geração</p>
+            <p class="author">por Fernando Miranda</p>
+            <div class="hero-buttons">
+                <a href="#baixar" class="btn btn-primary">📥 Baixar Capítulo 1 Grátis</a>
+                <a href="https://www.amazon.com.br/RESET-REINICIANDO-VIS%C3%83O-IMPACTAR-GERA%C3%87%C3%83O-ebook/dp/B0FH7H2XQV" target="_blank" rel="noopener noreferrer" class="btn btn-outline"> Comprar na Amazon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SOBRE ─── -->
+    <section class="about">
+        <div class="about-container">
+            <p class="section-label">Sobre o livro</p>
+            <h2>Você foi chamado.<br>Agora é hora de estar preparado.</h2>
+            <p>Este não é apenas mais um material sobre liderança. É um <strong>manual prático</strong>, inspirado em mais de <strong>13 anos de experiência ministerial</strong>, criado especialmente para líderes que acabam de assumir um ministério e sentem o peso — e o privilégio — do chamado.</p>
+            <p>Escrito por <strong>Fernando Miranda</strong>, presbítero, mentor de líderes e cofundador do movimento <strong>@canalnaopare</strong> (com mais de 1 milhão de seguidores no Instagram), este e-book é um convite a viver uma liderança inspiradora, consistente e cheia do Espírito.</p>
+            <p>Se você está começando agora, ou quer recomeçar com fundamentos sólidos, esta leitura será seu ponto de partida para deixar uma marca no Reino.</p>
+        </div>
+    </section>
+
+    <!-- ── PRINCÍPIOS ─── -->
+    <section class="principles">
+        <div class="principles-container">
+            <div class="principles-header">
+                <p class="section-label">O que você vai encontrar</p>
+                <h2>13 Princípios de Liderança Cristã</h2>
+            </div>
+            <div class="principles-grid">
+
+                <div class="principle-card">
+                    <div class="principle-number">01</div>
+                    <h4>Liderança com o que se tem</h4>
+                    <p>Engajamento além dos números — valorize quem está presente, não espere condições perfeitas.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">02</div>
+                    <h4>Liderança que complementa</h4>
+                    <p>A força das diferenças no time — ninguém faz tudo sozinho. Reconheça e some talentos.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">03</div>
+                    <h4>Liderança com visão</h4>
+                    <p>A força de uma causa que engaja — quando Deus dá a direção, o engajamento é inevitável.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">04</div>
+                    <h4>Liderança através da modelagem</h4>
+                    <p>Aprender com o exemplo — absorva o que é bom e evite o que é prejudicial.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">05</div>
+                    <h4>Liderança com organização</h4>
+                    <p>A base para uma liderança eficaz — planejamento transforma sonhos em realidade.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">06</div>
+                    <h4>Liderança pelo exemplo</h4>
+                    <p>A força de viver o que se prega — sua vida é a maior mensagem que você entrega.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">07</div>
+                    <h4>Liderança que ministra</h4>
+                    <p>A importância de ser uma voz de direção — liderar é ensinar, aconselhar e guiar.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">08</div>
+                    <h4>Liderança criativa</h4>
+                    <p>Refletindo a imagem do Deus criador — inove sem perder a essência da Palavra.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">09</div>
+                    <h4>Liderança para sucessão</h4>
+                    <p>Formando líderes para o futuro — o verdadeiro sucesso é ter um sucessor.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">10</div>
+                    <h4>Liderança com empatia</h4>
+                    <p>A chave para relacionamentos transformadores — cuide de pessoas, não apenas de tarefas.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">11</div>
+                    <h4>Liderança comunicativa</h4>
+                    <p>A chave para se fazer entendido — comunicação clara gera alinhamento e confiança.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">12</div>
+                    <h4>Liderança pelo Espírito Santo</h4>
+                    <p>A chave para um propósito eterno — sem a direção dEle, construímos sobre areia.</p>
+                </div>
+
+                <div class="principle-card">
+                    <div class="principle-number">13</div>
+                    <h4>Liderança com humildade</h4>
+                    <p>A chave para um crescimento contínuo — o verdadeiro líder é ensinável e reconhece suas limitações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── AUTOR ─── -->
+    <section class="author-section">
+        <div class="author-container">
+            <img src="foto-fernando.jpg" alt="Fernando Miranda — Presbítero e autor de RESET" class="author-photo">
+            <h3>Fernando Miranda</h3>
+            <p class="author-role">PRESBÍTERO · MENTOR DE LÍDERES · COFUNDADOR @canalnaopare</p>
+            <p>Presbítero na Assembleia de Deus em Curitiba, cofundador do movimento <strong>@canalnaopare</strong> (mais de 1 milhão de seguidores) e criador do <strong>@bap.rm12</strong>. Casado com a Chris, pai de Moisés, Elisa e Henrique. Atua há mais de 13 anos no ministério com adolescentes, jovens e formação de líderes. Coautor do devocional "Chamados Para Fora" (UMADC, 2022) e autor do e-book "O Desafio da Perseverança".</p>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section class="cta-section" id="baixar">
+        <div class="cta-container">
+            <p class="section-label">Comece agora</p>
+            <h2>Pronto para o Reset?</h2>
+            <p>Baixe o <strong>capítulo 1 gratuitamente</strong> e comece hoje mesmo a reiniciar sua visão de liderança. Depois, garanta o livro completo na Amazon e mergulhe nos 13 princípios que vão transformar seu ministério.</p>
+            <div class="cta-buttons">
+                <a href="https://drive.google.com/file/d/1ZHdyHwj8XZcX8ZaEn5zvCX9cb5jg3PrM/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-chapter"> Baixar Capítulo 1 Grátis</a>
+                <a href="https://www.amazon.com.br/RESET-REINICIANDO-VIS%C3%83O-IMPACTAR-GERA%C3%87%C3%83O-ebook/dp/B0FH7H2XQV" target="_blank" rel="noopener noreferrer" class="btn btn-amazon">🛒 Comprar na Amazon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="footer-container">
+            <h4>Fale comigo</h4>
+            <div class="footer-links">
+                <a href="https://www.instagram.com/fdinizmiranda/" target="_blank" rel="noopener noreferrer" class="footer-link instagram">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    @fdinizmiranda
+                </a>
+                <a href="https://wa.me/5541999995387" target="_blank" rel="noopener noreferrer" class="footer-link whatsapp">
+                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+            <p class="footer-copy">© 2026 Fernando Miranda — RESET. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
